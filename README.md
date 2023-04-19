@@ -17,3 +17,4 @@ Set your reminders in plain english without the need to have any application ins
 ![Demo 3](./demo/3.png)
 ![Demo 4](./demo/4.png)
 ![Demo 5](./demo/5.png)
+![Demo 6](./demo/6.png)
