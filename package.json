@@ -3,7 +3,7 @@
   "name": "simple-reminder",
   "title": "Simple Reminder",
   "description": "Set your reminders in natural language without the need to have any application installed.",
-  "icon": "command-icon.png",
+  "icon": "alarm.png",
   "author": "comoser",
   "categories": [
     "Productivity"
@@ -16,6 +16,13 @@
       "subtitle": "e.g. remind me to speak with Joana tomorrow at 1pm",
       "description": "Command to add a reminder. You will be notified when the reminder time is reached.",
       "mode": "view"
+    },
+    {
+      "name": "reminderNotifications",
+      "title": "Reminder system notifications",
+      "description": "Notify the user through a system notification when a reminder date is right up",
+      "mode": "no-view",
+      "interval": "1m"
     }
   ],
   "dependencies": {
