@@ -11,6 +11,10 @@ type CreateNewReminderProps = {
 };
 
 export async function createNewReminder(props: CreateNewReminderProps) {
+  if (props.reminder.date.getTime() < new Date().getTime()) {
+    throw new Error("The requested date is in the past!");
+  }
+
   const newReminderList = [...props.existingReminders, props.reminder];
   newReminderList.sort(dateSortPredicate);
   props.setReminders(newReminderList);

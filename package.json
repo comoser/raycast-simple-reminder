@@ -5,6 +5,7 @@
   "description": "Set your reminders in natural language without the need to have any application installed.",
   "icon": "logo.png",
   "author": "comoser",
+  "keywords": ["remind", "reminder", "simple"],
   "categories": [
     "Productivity"
   ],
