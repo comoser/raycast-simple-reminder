@@ -1,11 +1,12 @@
-import { useState } from "react";
-import { Action, ActionPanel, List } from "@raycast/api";
-import { randomUUID } from "crypto";
-import { useFetchStoredReminders } from "./hooks/useFetchStoredReminders";
-import { Reminder } from "./types/reminder";
-import { createNewReminder } from "./utils/createNewReminder";
-import { extractTopicAndDateFromInputText } from "./utils/extractTopicAndDateFromInputText";
-import { deleteReminder } from "./utils/deleteReminder";
+import { useState } from 'react';
+import { Action, ActionPanel, List, showToast, Toast } from '@raycast/api';
+import { randomUUID } from 'crypto';
+import { useFetchStoredReminders } from './hooks/useFetchStoredReminders';
+import { Reminder } from './types/reminder';
+import { createNewReminder } from './utils/createNewReminder';
+import { extractTopicAndDateFromInputText } from './utils/extractTopicAndDateFromInputText';
+import { deleteReminder } from './utils/deleteReminder';
+import Style = Toast.Style;
 
 export default function Command() {
   const [searchText, setSearchText] = useState("");
@@ -14,27 +15,34 @@ export default function Command() {
   useFetchStoredReminders(setReminders);
 
   const onSetReminderAction = async () => {
-    // TODO: this may fail, we need to verify that we have both topic and date as !== undefined
-    const { topic, date } = extractTopicAndDateFromInputText(searchText);
+    try {
+      const { topic, date } = extractTopicAndDateFromInputText(searchText);
 
-    await createNewReminder({
-      reminder: {
-        id: randomUUID(),
-        topic,
-        date,
-      },
-      existingReminders: reminders,
-      setReminders,
-      setSearchText,
-    });
+      await createNewReminder({
+        reminder: {
+          id: randomUUID(),
+          topic,
+          date,
+        },
+        existingReminders: reminders,
+        setReminders,
+        setSearchText,
+      });
+    } catch (e) {
+      await showToast(Style.Failure, "Reminder not set", "Oops. Did you specify a time you would like to be notified?")
+    }
   };
 
   const onDeleteReminderAction = async (reminderId: string) => {
-    await deleteReminder({
-      reminderId,
-      existingReminders: reminders,
-      setReminders,
-    });
+    try {
+      await deleteReminder({
+        reminderId,
+        existingReminders: reminders,
+        setReminders,
+      });
+    } catch (e) {
+      await showToast(Style.Failure, "Reminder not deleted", "Oops. This is truly unexpected, please contact us directly for us to solve the issue!")
+    }
   };
 
   return (

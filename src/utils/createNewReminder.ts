@@ -1,6 +1,7 @@
-import { Reminder } from "../types/reminder";
-import { LocalStorage } from "@raycast/api";
-import { dateSortPredicate } from "./dateSortPredicate";
+import { Reminder } from '../types/reminder';
+import { LocalStorage, showToast, Toast } from '@raycast/api';
+import { dateSortPredicate } from './dateSortPredicate';
+import Style = Toast.Style;
 
 type CreateNewReminderProps = {
   reminder: Reminder;
@@ -15,4 +16,5 @@ export async function createNewReminder(props: CreateNewReminderProps) {
   props.setReminders(newReminderList);
   await LocalStorage.setItem(props.reminder.id, JSON.stringify(props.reminder));
   props.setSearchText("");
+  await showToast(Style.Success, "Reminder set", "When the time is right, we'll notify you!")
 }

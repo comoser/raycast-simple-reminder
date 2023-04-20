@@ -14,5 +14,5 @@ export default async function Command() {
     }
   }
 
-  await updateCommandMetadata({ subtitle: `Last time checked for reminders: ${new Date().toLocaleString()}` });
+  await updateCommandMetadata({ subtitle: `Last checked for reminders: ${new Date().toLocaleString()}` });
 }
