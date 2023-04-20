@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Action, ActionPanel, List, showToast, Toast } from '@raycast/api';
-import { randomUUID } from 'crypto';
-import { useFetchStoredReminders } from './hooks/useFetchStoredReminders';
-import { Reminder } from './types/reminder';
-import { createNewReminder } from './utils/createNewReminder';
-import { extractTopicAndDateFromInputText } from './utils/extractTopicAndDateFromInputText';
-import { deleteReminder } from './utils/deleteReminder';
+import { useState } from "react";
+import { Action, ActionPanel, List, showToast, Toast } from "@raycast/api";
+import { randomUUID } from "crypto";
+import { useFetchStoredReminders } from "./hooks/useFetchStoredReminders";
+import { Reminder } from "./types/reminder";
+import { createNewReminder } from "./utils/createNewReminder";
+import { extractTopicAndDateFromInputText } from "./utils/extractTopicAndDateFromInputText";
+import { deleteReminder } from "./utils/deleteReminder";
 import Style = Toast.Style;
 
 export default function Command() {
@@ -29,7 +29,7 @@ export default function Command() {
         setSearchText,
       });
     } catch (e) {
-      await showToast(Style.Failure, "Reminder not set", "Oops. Did you specify a time you would like to be notified?")
+      await showToast(Style.Failure, "Reminder not set", "Oops. Did you specify a time you would like to be notified?");
     }
   };
 
@@ -41,7 +41,11 @@ export default function Command() {
         setReminders,
       });
     } catch (e) {
-      await showToast(Style.Failure, "Reminder not deleted", "Oops. This is truly unexpected, please contact us directly for us to solve the issue!")
+      await showToast(
+        Style.Failure,
+        "Reminder not deleted",
+        "Oops. This is truly unexpected, please contact us directly for us to solve the issue!"
+      );
     }
   };
 
