@@ -1,6 +1,6 @@
 # Simple Reminder Changelog
 
-## [Initial Version] - 2023-04-18
+## [Initial Version] - 2023-04-20
 
 - Add "Add-reminder" command to set a new reminder in the system by interpreting natural language
 - Add a list of the existing reminders
