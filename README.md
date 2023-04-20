@@ -12,9 +12,9 @@ Set your reminders in plain english without the need to have any application ins
 
 ## Screenshots
 
-![Demo 1](./demo/1.png)
-![Demo 2](./demo/2.png)
-![Demo 3](./demo/3.png)
-![Demo 4](./demo/4.png)
-![Demo 5](./demo/5.png)
-![Demo 6](./demo/6.png)
+![Demo 1](media/1.png)
+![Demo 2](media/2.png)
+![Demo 3](media/3.png)
+![Demo 4](media/4.png)
+![Demo 5](media/5.png)
+![Demo 6](media/6.png)

@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { Action, ActionPanel, List } from "@raycast/api";
-import { randomUUID } from 'crypto';
-import { useFetchStoredReminders } from './hooks/useFetchStoredReminders';
-import { Reminder } from './types/reminder';
-import { createNewReminder } from './utils/createNewReminder';
-import { extractTopicAndDateFromInputText } from './utils/extractTopicAndDateFromInputText';
-import { deleteReminder } from './utils/deleteReminder';
+import { randomUUID } from "crypto";
+import { useFetchStoredReminders } from "./hooks/useFetchStoredReminders";
+import { Reminder } from "./types/reminder";
+import { createNewReminder } from "./utils/createNewReminder";
+import { extractTopicAndDateFromInputText } from "./utils/extractTopicAndDateFromInputText";
+import { deleteReminder } from "./utils/deleteReminder";
 
 export default function Command() {
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [reminders, setReminders] = useState<Reminder[]>([]);
 
   useFetchStoredReminders(setReminders);
@@ -46,34 +46,22 @@ export default function Command() {
     >
       <List.Item
         title="Set reminder"
-        icon="alarm.png"
+        icon="checkmark.png"
         actions={
           <ActionPanel>
-            <Action
-              autoFocus
-              title="Set Reminder"
-              icon="alarm.png"
-              onAction={onSetReminderAction}
-            />
+            <Action autoFocus title="Set Reminder" icon="checkmark.png" onAction={onSetReminderAction} />
           </ActionPanel>
         }
       />
-      <List.Section
-        title="Existing reminders"
-        subtitle="you can edit existing reminders"
-      >
-        {reminders.map(reminder => (
+      <List.Section title="Existing reminders" subtitle="you can edit existing reminders">
+        {reminders.map((reminder) => (
           <List.Item
             key={reminder.id}
             title={reminder.topic}
             subtitle={`set to ${reminder.date.toLocaleString()}`}
             actions={
               <ActionPanel>
-                <Action
-                  title="Delete Reminder"
-                  icon="trash.png"
-                  onAction={() => onDeleteReminderAction(reminder.id)}
-                />
+                <Action title="Delete Reminder" icon="trash.png" onAction={() => onDeleteReminderAction(reminder.id)} />
               </ActionPanel>
             }
           />

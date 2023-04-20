@@ -1,8 +1,8 @@
-import natural from 'natural';
-import * as chrono from 'chrono-node';
+import natural from "natural";
+import * as chrono from "chrono-node";
 
 const tokenizer = new natural.WordTokenizer();
-const EXCLUDED_TOKENS = ['remind', 'me', 'to', 'on'];
+const EXCLUDED_TOKENS = ["remind", "me", "to", "on"];
 
 // TODO: input text may not have a date related text, and this breaks
 // TODO: to fail gracefully, this should return { date: undefined, topic }
@@ -12,10 +12,10 @@ export function extractTopicAndDateFromInputText(inputText: string) {
   const dateTimeRelatedTokens = tokenizer.tokenize(timeText);
   const inputTextTokens = tokenizer.tokenize(inputText);
   const tokensToRemoveForTopic = [...dateTimeRelatedTokens, ...EXCLUDED_TOKENS];
-  const extractedTopicTokens = inputTextTokens.filter(token => !tokensToRemoveForTopic.includes(token));
+  const extractedTopicTokens = inputTextTokens.filter((token) => !tokensToRemoveForTopic.includes(token));
 
   return {
     date: targetDate,
-    topic: extractedTopicTokens.join(' '),
-  }
+    topic: extractedTopicTokens.join(" "),
+  };
 }

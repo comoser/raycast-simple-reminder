@@ -1,7 +1,7 @@
-import { LocalStorage } from '@raycast/api';
-import { useEffect } from 'react';
-import { Reminder } from '../types/reminder';
-import { dateSortPredicate } from '../utils/dateSortPredicate';
+import { LocalStorage } from "@raycast/api";
+import { useEffect } from "react";
+import { Reminder } from "../types/reminder";
+import { dateSortPredicate } from "../utils/dateSortPredicate";
 
 export function useFetchStoredReminders(setReminders: (reminders: Reminder[]) => void) {
   useEffect(() => {
